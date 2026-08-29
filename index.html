@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ZAV CodeLab: belajar HTML, CSS, dan JavaScript langsung dari HP.">
+  <meta name="theme-color" content="#11142b">
+  <title>ZAV CodeLab — Belajar Coding dari HP</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="ZAV CodeLab, kembali ke atas">
+      <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+      <span>ZAV <strong>CodeLab</strong></span>
+    </a>
+    <span class="save-state" id="saveState" aria-live="polite">Tersimpan di HP</span>
+  </header>
+
+  <main id="top">
+    <section class="intro" aria-labelledby="introTitle">
+      <div class="intro-copy">
+        <span class="eyebrow">Kelas 6 · Mulai dari nol</span>
+        <h1 id="introTitle">Belajar coding sambil langsung bikin sesuatu.</h1>
+        <p>Baca misi kecil, ubah kodenya, lalu lihat hasilnya. Nggak perlu instal apa pun.</p>
+        <a class="primary-link" href="#belajar">Mulai misi pertama</a>
+      </div>
+      <aside class="progress-card" aria-label="Progress belajar">
+        <div class="progress-heading">
+          <div><span>Progress kamu</span><strong id="progressText">0 dari 6 misi</strong></div>
+          <span class="level-badge" id="levelBadge">Pemula</span>
+        </div>
+        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressTrack">
+          <span id="progressFill"></span>
+        </div>
+        <p id="progressMessage">Selesaikan satu misi untuk mendapat bintang pertama.</p>
+      </aside>
+    </section>
+
+    <section class="lesson-section" id="belajar" aria-labelledby="lessonSectionTitle">
+      <div class="section-heading">
+        <div><span class="eyebrow">Jalur belajar</span><h2 id="lessonSectionTitle">Pilih misi</h2></div>
+        <p>Urut dari yang paling gampang.</p>
+      </div>
+      <div class="lesson-list" id="lessonList" aria-label="Daftar misi"></div>
+    </section>
+
+    <section class="workspace" aria-labelledby="missionTitle">
+      <article class="mission-card">
+        <div class="mission-number" id="missionNumber">01</div>
+        <div>
+          <span class="eyebrow" id="missionType">HTML dasar</span>
+          <h2 id="missionTitle">Buat judul pertamamu</h2>
+          <p id="missionDescription"></p>
+        </div>
+        <div class="goal-box"><strong>Target misi</strong><p id="missionGoal"></p></div>
+      </article>
+
+      <div class="lab-grid">
+        <section class="editor-card" aria-labelledby="editorTitle">
+          <div class="panel-heading">
+            <div><span class="dot pink"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+            <strong id="editorTitle">Tempat mengetik</strong><span class="light-label">Ringan</span>
+          </div>
+          <div class="language-tabs" role="tablist" aria-label="Bahasa coding">
+            <button class="language-tab active" type="button" role="tab" data-language="html" aria-selected="true">HTML</button>
+            <button class="language-tab" type="button" role="tab" data-language="css" aria-selected="false">CSS</button>
+            <button class="language-tab" type="button" role="tab" data-language="js" aria-selected="false">JavaScript</button>
+          </div>
+          <label class="sr-only" for="codeEditor">Editor kode</label>
+          <textarea id="codeEditor" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"></textarea>
+          <div class="symbol-tools" aria-label="Tombol simbol coding">
+            <span>Simbol cepat:</span>
+            <button type="button" data-insert="<">&lt;</button><button type="button" data-insert=">">&gt;</button>
+            <button type="button" data-insert="{">{</button><button type="button" data-insert="}">}</button>
+            <button type="button" data-insert="&quot;">&quot;</button><button type="button" data-insert=";">;</button>
+          </div>
+          <div class="editor-actions">
+            <button class="run-button" id="runButton" type="button">▶ Jalankan</button>
+            <button class="secondary-button" id="hintButton" type="button">💡 Petunjuk</button>
+            <button class="text-button" id="resetButton" type="button">Reset</button>
+          </div>
+          <p class="feedback" id="feedback" aria-live="polite">Siap. Ubah kode lalu tekan Jalankan.</p>
+        </section>
+
+        <section class="preview-card" aria-labelledby="previewTitle">
+          <div class="panel-heading preview-heading"><strong id="previewTitle">Hasil kamu</strong><span class="preview-status" id="previewStatus">Belum dijalankan</span></div>
+          <iframe id="previewFrame" class="preview-frame" title="Hasil coding" sandbox="allow-scripts"></iframe>
+          <button class="complete-button" id="completeButton" type="button">Periksa misi ✓</button>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="success-dialog" id="successDialog">
+    <div class="success-icon" aria-hidden="true">⭐</div>
+    <h2>Misi selesai!</h2><p id="successMessage"></p>
+    <div class="dialog-actions">
+      <button class="run-button" id="nextLessonButton" type="button">Misi berikutnya</button>
+      <button class="text-button" id="closeDialogButton" type="button">Tetap di sini</button>
+    </div>
+  </dialog>
+
+  <footer><strong>ZAV CodeLab</strong><span>Belajar pelan-pelan, bikin sesuatu setiap hari.</span></footer>
+  <noscript><p class="noscript-message">Aktifkan JavaScript agar editor dan preview dapat digunakan.</p></noscript>
+  <script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "ZAV CodeLab",
+  "short_name": "CodeLab",
+  "description": "Belajar HTML, CSS, dan JavaScript langsung dari HP.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#090b18",
+  "theme_color": "#11142b",
+  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
